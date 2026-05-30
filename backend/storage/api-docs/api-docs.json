@@ -1,0 +1,378 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "ProviEmplea API",
+        "description": "API REST para la plataforma de empleo ProviEmplea de Providencia.",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8080/api",
+            "description": "Servidor de desarrollo local"
+        }
+    ],
+    "paths": {
+        "/admin/contactos": {
+            "get": {
+                "tags": [
+                    "Administración"
+                ],
+                "summary": "Listar contactos solicitados",
+                "operationId": "getContactosSolicitados",
+                "responses": {
+                    "200": {
+                        "description": "Listado exitoso"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Administración"
+                ],
+                "summary": "Registrar solicitud de contacto",
+                "operationId": "crearContactoSolicitado",
+                "responses": {
+                    "201": {
+                        "description": "Contacto registrado"
+                    }
+                }
+            }
+        },
+        "/admin/contactos/{id}/estado": {
+            "patch": {
+                "tags": [
+                    "Administración"
+                ],
+                "summary": "Actualizar estado de contacto",
+                "operationId": "actualizarEstadoContacto",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Estado actualizado"
+                    }
+                }
+            }
+        },
+        "/admin/estadisticas": {
+            "get": {
+                "tags": [
+                    "Administración"
+                ],
+                "summary": "Estadísticas generales de la plataforma",
+                "operationId": "getEstadisticas",
+                "responses": {
+                    "200": {
+                        "description": "Estadísticas generadas"
+                    }
+                }
+            }
+        },
+        "/empresas": {
+            "get": {
+                "tags": [
+                    "Empresas"
+                ],
+                "summary": "Listar empresas validadas",
+                "operationId": "getEmpresas",
+                "responses": {
+                    "200": {
+                        "description": "Listado exitoso"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Empresas"
+                ],
+                "summary": "Registrar nueva empresa",
+                "operationId": "createEmpresa",
+                "responses": {
+                    "201": {
+                        "description": "Empresa creada"
+                    }
+                }
+            }
+        },
+        "/empresas/{id}": {
+            "get": {
+                "tags": [
+                    "Empresas"
+                ],
+                "summary": "Obtener empresa por ID",
+                "operationId": "getEmpresa",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Empresa encontrada"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Empresas"
+                ],
+                "summary": "Actualizar empresa",
+                "operationId": "updateEmpresa",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Empresa actualizada"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Empresas"
+                ],
+                "summary": "Desactivar empresa",
+                "operationId": "deleteEmpresa",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Empresa desactivada"
+                    }
+                }
+            }
+        },
+        "/empresas/{id}/validar": {
+            "patch": {
+                "tags": [
+                    "Empresas"
+                ],
+                "summary": "Validar empresa (solo administración)",
+                "operationId": "validarEmpresa",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Empresa validada"
+                    }
+                }
+            }
+        },
+        "/health": {
+            "get": {
+                "tags": [
+                    "Health"
+                ],
+                "summary": "Verificar estado del servicio",
+                "description": "Endpoint de observabilidad. Verifica que la API está disponible.",
+                "operationId": "healthCheck",
+                "responses": {
+                    "200": {
+                        "description": "Servicio operativo",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "online"
+                                        },
+                                        "service": {
+                                            "type": "string",
+                                            "example": "ProviEmplea API"
+                                        },
+                                        "version": {
+                                            "type": "string",
+                                            "example": "1.0.0"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/personas": {
+            "get": {
+                "tags": [
+                    "Personas"
+                ],
+                "summary": "Listar personas (CV ciego)",
+                "description": "Obtiene talentos activos en formato de CV ciego.",
+                "operationId": "getPersonas",
+                "responses": {
+                    "200": {
+                        "description": "Listado exitoso"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Personas"
+                ],
+                "summary": "Registrar nueva persona/talento",
+                "description": "Crea un perfil de talento con código autogenerado.",
+                "operationId": "createPersona",
+                "responses": {
+                    "201": {
+                        "description": "Persona creada"
+                    },
+                    "422": {
+                        "description": "Errores de validación"
+                    }
+                }
+            }
+        },
+        "/personas/{id}": {
+            "get": {
+                "tags": [
+                    "Personas"
+                ],
+                "summary": "Obtener persona por ID",
+                "operationId": "getPersona",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Persona encontrada"
+                    },
+                    "404": {
+                        "description": "No encontrada"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Personas"
+                ],
+                "summary": "Actualizar persona",
+                "operationId": "updatePersona",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Persona actualizada"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Personas"
+                ],
+                "summary": "Desactivar persona",
+                "operationId": "deletePersona",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Persona desactivada"
+                    }
+                }
+            }
+        },
+        "/personas/{id}/validar": {
+            "patch": {
+                "tags": [
+                    "Personas"
+                ],
+                "summary": "Validar persona (solo administración)",
+                "operationId": "validarPersona",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Persona validada"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Administración",
+            "description": "Administración"
+        },
+        {
+            "name": "Empresas",
+            "description": "Empresas"
+        },
+        {
+            "name": "Health",
+            "description": "Health"
+        },
+        {
+            "name": "Personas",
+            "description": "Personas"
+        }
+    ]
+}
