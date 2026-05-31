@@ -22,6 +22,7 @@ class EmpresaController extends Controller
     }
 
     #[OA\Post(path: "/empresas", operationId: "createEmpresa", summary: "Registrar nueva empresa", tags: ["Empresas"])]
+    #[OA\RequestBody(required: true, description: "JSON con los datos de la empresa", content: new OA\JsonContent(type: "object"))]
     #[OA\Response(response: 201, description: "Empresa creada")]
     public function store(Request $request): JsonResponse
     {
@@ -61,6 +62,7 @@ class EmpresaController extends Controller
 
     #[OA\Put(path: "/empresas/{id}", operationId: "updateEmpresa", summary: "Actualizar empresa", tags: ["Empresas"])]
     #[OA\Parameter(name: "id", in: "path", required: true, schema: new OA\Schema(type: "integer"))]
+    #[OA\RequestBody(required: true, description: "Datos a actualizar", content: new OA\JsonContent(type: "object"))]
     #[OA\Response(response: 200, description: "Empresa actualizada")]
     public function update(Request $request, int $empresa): JsonResponse
     {

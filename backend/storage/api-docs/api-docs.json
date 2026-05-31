@@ -31,6 +31,17 @@
                 ],
                 "summary": "Registrar solicitud de contacto",
                 "operationId": "crearContactoSolicitado",
+                "requestBody": {
+                    "description": "JSON con los datos de la solicitud de contacto",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "201": {
                         "description": "Contacto registrado"
@@ -55,6 +66,17 @@
                         }
                     }
                 ],
+                "requestBody": {
+                    "description": "Nuevo estado y notas",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "Estado actualizado"
@@ -95,6 +117,17 @@
                 ],
                 "summary": "Registrar nueva empresa",
                 "operationId": "createEmpresa",
+                "requestBody": {
+                    "description": "JSON con los datos de la empresa",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "201": {
                         "description": "Empresa creada"
@@ -141,6 +174,17 @@
                         }
                     }
                 ],
+                "requestBody": {
+                    "description": "Datos a actualizar",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "Empresa actualizada"
@@ -251,6 +295,17 @@
                 "summary": "Registrar nueva persona/talento",
                 "description": "Crea un perfil de talento con código autogenerado.",
                 "operationId": "createPersona",
+                "requestBody": {
+                    "description": "JSON con los datos del talento",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "201": {
                         "description": "Persona creada"
@@ -303,6 +358,17 @@
                         }
                     }
                 ],
+                "requestBody": {
+                    "description": "Datos a actualizar",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "Persona actualizada"

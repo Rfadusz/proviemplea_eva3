@@ -28,6 +28,7 @@ class PersonaController extends Controller
     }
 
     #[OA\Post(path: "/personas", operationId: "createPersona", summary: "Registrar nueva persona/talento", description: "Crea un perfil de talento con código autogenerado.", tags: ["Personas"])]
+    #[OA\RequestBody(required: true, description: "JSON con los datos del talento", content: new OA\JsonContent(type: "object"))]
     #[OA\Response(response: 201, description: "Persona creada")]
     #[OA\Response(response: 422, description: "Errores de validación")]
     public function store(Request $request): JsonResponse
@@ -77,6 +78,7 @@ class PersonaController extends Controller
 
     #[OA\Put(path: "/personas/{id}", operationId: "updatePersona", summary: "Actualizar persona", tags: ["Personas"])]
     #[OA\Parameter(name: "id", in: "path", required: true, schema: new OA\Schema(type: "integer"))]
+    #[OA\RequestBody(required: true, description: "Datos a actualizar", content: new OA\JsonContent(type: "object"))]
     #[OA\Response(response: 200, description: "Persona actualizada")]
     public function update(Request $request, int $persona): JsonResponse
     {
